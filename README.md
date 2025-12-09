@@ -1,2 +1,6 @@
-# 2025_26_CA102B_Mini-Project
-Web Development–I for Mini Project
+Team Name :- Tech Titans
+Team Leader :- Ujjwal Mishra(202510116100234)
+Team Menbers :- 
+Tarun Bhardwaj (202510116100227)
+Shiva Chaudhary (202510116100204)
+Vishal Kashyap (202510116100248)
