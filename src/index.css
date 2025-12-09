@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes bubble {
+    0% {
+      transform: scaleY(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+  }
+  
+  .animate-bubble {
+    transform-origin: top;
+    animation: bubble 0.5s ease-in-out forwards;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }  
