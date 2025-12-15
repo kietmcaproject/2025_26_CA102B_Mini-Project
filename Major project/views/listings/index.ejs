@@ -1,0 +1,48 @@
+<% layout("/layouts/boilerplate") %>
+<div class="container my-4">
+  <h2 class="text-center mb-4"> All Listings</h2>
+
+  <% if (allListings.length === 0) { %>
+    <p class="text-center text-danger"> No listings found!</p>
+  <% } else { %>
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4">
+      <% for (let listing of allListings) { %>
+        <div class="col">
+          <a href="/listings/<%= listing._id %>" class="text-decoration-none text-dark">
+            <div class="card shadow-sm h-100">
+              <% 
+                // compute a safe image src that handles several storage shapes:
+                // 1) normalized `listing.imageUrl` set by controller
+                // 2) `listing.image.url` when image is an object
+                // 3) `listing.image` when image is a plain url string
+                // 4) stringified object containing an http(s) url
+                let imgSrc = '';
+                if (listing.imageUrl) {
+                  imgSrc = listing.imageUrl;
+                } else if (listing.image && listing.image.url) {
+                  imgSrc = listing.image.url;
+                } else if (typeof listing.image === 'string') {
+                  const m = listing.image.match(/https?:\/\/[^")'\s]+/);
+                  imgSrc = m ? m[0] : listing.image;
+                } else {
+                  imgSrc = 'https://via.placeholder.com/400x300?text=No+Image';
+                }
+              %>
+              <img
+                src="<%= imgSrc %>"
+                class="card-img-top"
+                alt="<%= listing.title %>"
+                style="height: 200px; object-fit: cover;"
+              />
+              <div class="card-body">
+                <h5 class="card-title fw-semibold"><%= listing.title %></h5>
+                <p class="text-muted mb-1"><%= listing.location %>, <%= listing.country %></p>
+                <p class="fw-bold">₹<%= listing.price.toLocaleString("en-IN") %> / night</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      <% } %>
+    </div>
+  <% } %>
+</div>
