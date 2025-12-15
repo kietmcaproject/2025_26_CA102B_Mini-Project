@@ -1,5 +1,5 @@
 # EaseStay
-# Team DreanCoders
+# Team DreamCoders
 
 - **Saloni Kashyap** – 202510116100192  
   Section: D
